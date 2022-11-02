@@ -1,0 +1,13 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+  justify-items: center;
+  margin-top: 0;
+  //display: flex;
+  //flex-wrap: wrap;
+  //margin-left: 20px;
+}
+
+
+
