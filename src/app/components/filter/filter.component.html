@@ -1,3 +1,38 @@
-<div class="filter">
-  <button>asdasdas</button>
-</div>
+<tui-root>
+  <div class="filter">
+    <form
+    >
+      <tui-input style="border: 2px solid #2E62D9; margin-bottom: 15px">
+        Начните поиск здесь...
+        <input
+          tuiTextfield
+          type="text"
+        />
+      </tui-input>
+    </form>
+
+    <tui-input-slider
+      class="control"
+      style="border: 2px solid rgba(46, 98, 217, 0.32); margin-bottom: 15px"
+      [min]="min"
+      [max]="max"
+      [steps]="steps"
+      [quantum]="quantum"
+      [formControl]="control"
+    >
+      Размер экрана, дюймов
+    </tui-input-slider>
+
+
+    <div style="margin-bottom: 15px">
+      <app-dropdown-system></app-dropdown-system>
+      <app-dropdown-type></app-dropdown-type>
+    </div>
+
+    <div>
+      <app-dropdown-department></app-dropdown-department>
+    </div>
+
+    <button>asdasdas</button>
+  </div>
+</tui-root>
