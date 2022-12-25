@@ -1,7 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
+import {Component} from '@angular/core';
 
 
 @Component({

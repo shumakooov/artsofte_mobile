@@ -1,10 +1,14 @@
-<app-filter></app-filter>
-<div class="wrapper">
-  <app-device></app-device>
-  <app-device></app-device>
-  <app-device></app-device>
-  <app-device></app-device>
-  <app-device></app-device>
+<div style="padding-bottom: 10vh">
+  <app-filter></app-filter>
+  <div class="wrapper" *ngIf="devices$ | async as devices">
+    <app-device
+      class="device"
+      *ngFor="let device of devices"
+      [imgUrl]="device.image"
+      [deviceName]="device.name"
+      [os]="device.os"
+      [diagonal]="device.diagonal"
+      [department]="device.department.name"
+    ></app-device>
+  </div>
 </div>
-
-

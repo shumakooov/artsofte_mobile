@@ -1,0 +1,82 @@
+<div
+  class="back_side"
+  (click)="modalDeviceCardService.close()"
+></div>
+
+<div class="wrapper">
+
+  <div style="display: grid; grid-template-columns: 2fr 3fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;">
+    <div class="container">
+      <img class="container_img"
+           src="https://cdn.fotosklad.ru/upload/iblock/4c7/4c7ffb9c9517a423ddd05daabf243782_thumb_4d76a05b13f4590.jpg">
+    </div>
+    <div class="container_spec">
+      <p style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">POCO X3 PRO</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">OS: MIUI, Android 11</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">Диагональ: 6.67"</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">Отдел: ...</p>
+    </div>
+  </div>
+
+  <tui-input-tag
+    tuiTextfieldSize="m"
+    [uniqueTags]="false"
+    [(ngModel)]="value"
+    [tuiTextfieldLabelOutside]="true"
+    [formControl]="control"
+    style="width: 270px;"
+  >
+  </tui-input-tag>
+
+
+  <button
+    tuiButton
+    type="button"
+    class="button"
+    appearance="blue_outline"
+    size="m"
+    style="font-size: 15px; width: 270px; margin-bottom: 15px; margin-top: 15px;"
+    (click)="modalDeviceCardService.close(); modalCharacteristicDeviceService.open()"
+  >
+    Подробнее
+  </button>
+
+  <button
+    tuiButton
+    type="button"
+    class="button"
+    appearance="blue_outline"
+    size="m"
+    style="font-size: 15px; width: 270px; margin-bottom: 15px;"
+    (click)="modalDeviceCardService.close(); modalUsageHistoryService.open()"
+  >
+    История использований
+  </button>
+
+  <button
+    tuiButton
+    type="button"
+    class="button"
+    appearance="blue_outline"
+    size="m"
+    style="font-size: 15px; width: 270px; margin-bottom: 15px;"
+    (click)="modalDeviceCardService.close()"
+  >
+    Календарь устройства
+  </button>
+
+  <button
+    tuiButton
+    type="button"
+    class="button"
+    size="m"
+    style="font-size: 15px; width: 270px;"
+    (click)="modalDeviceCardService.close(); modalBookingCardService.open()"
+  >
+    <tui-svg
+      src="tuiIconCheckCircle"
+      class="icon"
+    ></tui-svg>
+    Забронировать
+  </button>
+</div>

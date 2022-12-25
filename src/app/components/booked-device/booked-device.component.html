@@ -2,34 +2,58 @@
   <img src="https://cdn.fotosklad.ru/upload/iblock/4c7/4c7ffb9c9517a423ddd05daabf243782_thumb_4d76a05b13f4590.jpg"
        class="item_img"
   />
-  <p>POCO X3 PRO</p>
-  <p>04.11.2022</p>
-  <p>10:00 - 22:00</p>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; justify-items: center;">
+  <p style="line-height: 13px; font-weight: 700; color: #434854;">POCO X3 PRO</p>
+  <p style="line-height: 13px; color: #434854;">04.11.2022</p>
+  <p style="line-height: 13px; color: #434854;">10:00 - 22:00</p>
+  <p style="line-height: 13px; color: #434854;">Отдел</p>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; justify-items: center; margin: 0 10%">
     <button
       tuiButton
       type="button"
       class="button"
-      style="height: 32px; font-size: 10px; width: 60px; --tui-padding: 0.5rem"
+      size="s"
+      style="font-size: 10px; width: 55px; --tui-padding: 0.5rem"
       appearance="accent"
+      (click)="modalDeviceProblemService.open()"
     >
-      !
+      <tui-svg
+        src="tuiIconAttention"
+        class="icon"
+      ></tui-svg>
     </button>
     <button
       tuiButton
       type="button"
       class="button"
-      style="height: 32px; font-size: 10px; width: 60px; --tui-padding: 0.5rem"
+      size="s"
+      style="font-size: 10px; width: 55px; --tui-padding: 0.5rem"
+      (click)="modalConfirmCancelReserveService.open()"
     >
-      x
+      <tui-svg
+        src="tuiIconClose"
+        class="icon"
+        style="padding: 0; margin: 0;"
+      ></tui-svg>
     </button>
   </div>
   <button
     tuiButton
     type="button"
     class="button"
-    style="height: 32px; font-size: 10px; width: 80%; margin-top: 10px"
+    appearance="green"
+    size="s"
+    style="font-size: 10px; width: 80%; margin-top: 10px"
+    (click)="modalConfirmReturnDeviceService.open()"
   >
-    Галочка
+    <tui-svg
+      src="tuiIconCheckCircle"
+      class="icon"
+    ></tui-svg>
   </button>
 </div>
+
+<app-modal-cancel-reserve *ngIf="modalCancelReserveService.isVisible$ | async"></app-modal-cancel-reserve>
+<app-modal-return-device *ngIf="modalReturnDeviceService.isVisible$ | async"></app-modal-return-device>
+<app-modal-device-problem *ngIf="modalDeviceProblemService.isVisible$ | async"></app-modal-device-problem>
+<app-modal-confirm-return-device *ngIf="modalConfirmReturnDeviceService.isVisible$ | async"></app-modal-confirm-return-device>
+<app-modal-confirm-cancel-reserve *ngIf="modalConfirmCancelReserveService.isVisible$ | async"></app-modal-confirm-cancel-reserve>

@@ -1,5 +1,5 @@
 .nav{
-  height: 8vh;
+  height: 9vh;
   width: 100%;
   background-color: white;
   position: fixed;
@@ -7,4 +7,24 @@
   border-radius: 20px 20px 0 0;
   justify-content: space-around;
   display: flex;
+  align-items: center;
+}
+
+.link{
+  color: rgba(46, 98, 217, 0.4);
+  border: 2px solid rgba(46, 98, 217, 0.4);
+  border-radius: 16px;
+  //&:hover{
+  //    color: #2E62D9;
+  //    border: 2px solid #2E62D9;
+  //  }
+}
+
+.icon{
+  padding: 13px;
+}
+
+.active{
+  color: #2E62D9;
+  border: 2px solid #2E62D9;
 }

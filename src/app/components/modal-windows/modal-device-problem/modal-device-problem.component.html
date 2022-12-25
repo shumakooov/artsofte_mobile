@@ -1,0 +1,52 @@
+<div
+  class="back_side"
+  (click)="modalDeviceProblemService.close()"
+></div>
+
+<div class="container">
+  <p style="color: #2E62D9; font-size: 15px; margin-bottom: 15px;">Опишите проблему</p>
+  <app-dropdown-reason></app-dropdown-reason>
+
+  <form
+    style="max-width: 270px; display: block; margin-bottom: 15px;  max-height: 180px;"
+    [formGroup]="testForm"
+  >
+    <div class="tui-row">
+      <div>
+        <tui-text-area
+          style="width: 270px; height: 180px;"
+          formControlName="testValue2"
+        >
+          Описание
+        </tui-text-area>
+      </div>
+    </div>
+  </form>
+
+  <app-input-files></app-input-files>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; justify-items: center; column-gap: 10px;">
+    <button
+      tuiButton
+      type="button"
+      class="button"
+      appearance="green_outline"
+      size="m"
+      style="font-size: 15px; width: 130px;"
+      (click)="modalDeviceProblemService.close()"
+    >
+      Отправить
+    </button>
+    <button
+      tuiButton
+      type="button"
+      class="button"
+      appearance="red_outline"
+      size="m"
+      style="font-size: 15px; width: 130px;"
+      (click)="modalDeviceProblemService.close()"
+    >
+      Отмена
+    </button>
+  </div>
+</div>

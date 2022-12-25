@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dropdown-department.component.scss']
 })
 export class DropdownDepartmentComponent implements OnInit {
-
   open = false;
 
   onClick(): void {

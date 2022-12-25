@@ -1,12 +1,15 @@
 .filter{
-  height: 450px;
   width: 100%;
   background-color: #fff;
   //transform: translateY(-375px);
   //position: fixed;
-  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  //align-items: center;
 }
 
+.island{
+  margin-bottom: 15px;
+  width: 100%;
+}

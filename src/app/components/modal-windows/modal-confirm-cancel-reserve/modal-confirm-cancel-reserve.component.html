@@ -1,0 +1,32 @@
+<div
+  class="back_side"
+  (click)="modalCancelReserveService.close()"
+></div>
+
+<div class="container">
+  <p style="color: #2E62D9; font-size: 15px; text-align: center">Вы хотите отменить бронь?</p>
+  <div>
+    <button
+      tuiButton
+      type="button"
+      class="button"
+      appearance="green_outline"
+      size="m"
+      style="font-size: 15px; width: 125px; margin-right: 15px;"
+      (click)="modalConfirmCancelReserveService.close(); modalCancelReserveService.open()"
+    >
+      Да
+    </button>
+    <button
+      tuiButton
+      type="button"
+      class="button"
+      appearance="red_outline"
+      size="m"
+      style="font-size: 15px; width: 125px;"
+      (click)="modalConfirmCancelReserveService.close()"
+    >
+      Нет
+    </button>
+  </div>
+</div>

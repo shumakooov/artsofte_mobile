@@ -1,0 +1,39 @@
+<div
+  class="back_side"
+  (click)="modalCharacteristicDeviceService.close()"
+></div>
+
+<div class="wrapper">
+  <h3 style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">Характеристики</h3>
+  <h3 style="font-size: 12px;">Экран</h3>
+  <p style="font-size: 12px;"><span>Диагональ экрана (дюйм)</span><span>6.67"</span></p>
+  <p style="font-size: 12px;"><span>Разрешение экрана</span><span>2400x1080</span></p>
+  <p style="font-size: 12px;"><span>Плотность пикселей</span><span>395 ppi</span></p>
+  <p style="font-size: 12px;"><span>Технология изготовления экрана</span><span>IPS</span></p>
+  <p style="font-size: 12px;"><span>Соотношение сторон</span><span>20:9</span></p>
+
+  <h3 style="font-size: 12px;">Система</h3>
+  <p style="font-size: 12px;"><span>Версия ОС</span><span>Android 11</span></p>
+  <p style="font-size: 12px;"><span>Поддержка Google Mobile Services</span><span>есть</span></p>
+  <p style="font-size: 12px;"><span>Производитель процессора</span><span>Qualcomm</span></p>
+  <p style="font-size: 12px;"><span>Модель процессора</span><span>Snapdragon 860</span></p>
+  <p style="font-size: 12px;"><span>Количество ядер</span><span>8</span></p>
+  <p style="font-size: 12px;"><span>Частота работы процессора</span><span>2.96 ГГц</span></p>
+  <p style="font-size: 12px;"><span>Конфигурация процессора</span>
+  <span>3x Kryo 485 (Cortex-A76) 2.42 ГГц, 4x Kryo 485 (Cortex-A55) 1.8 ГГц, 1x Kryo 485 (Cortex-A76) 2.96 ГГц</span></p>
+  <p style="font-size: 12px;"><span>Техпроцесс</span><span>7 нм</span></p>
+  <p style="font-size: 12px;"><span>Графический ускоритель</span><span>Adreno 640</span></p>
+
+
+  <button
+    tuiButton
+    type="button"
+    class="button"
+    size="m"
+    style="font-size: 15px; width: 270px; justify-content: center; align-self: center;"
+    appearance="red_outline"
+    (click)="modalCharacteristicDeviceService.close(); modalDeviceCardService.open()"
+  >
+    Назад
+  </button>
+</div>

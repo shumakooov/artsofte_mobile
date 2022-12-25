@@ -1,0 +1,86 @@
+<div
+  class="back_side"
+  (click)="modalBookingCardService.close()"
+></div>
+
+<div class="wrapper">
+
+  <div
+    style="display: grid; grid-template-columns: 2fr 3fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;">
+    <div class="container">
+      <img class="container_img"
+           src="https://cdn.fotosklad.ru/upload/iblock/4c7/4c7ffb9c9517a423ddd05daabf243782_thumb_4d76a05b13f4590.jpg">
+    </div>
+    <div class="container_spec">
+      <p style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">POCO X3 PRO</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">OS: MIUI, Android 11</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">Диагональ: 6.67"</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">Отдел: ...</p>
+    </div>
+  </div>
+
+  <form
+    class="b-form"
+    [tuiTextfieldCleaner]="true"
+    style="margin-bottom: 15px; width: 270px;"
+  >
+    <tui-input-date
+      tuiUnfinishedValidator="Finish filling the field"
+    >
+      Choose a date
+    </tui-input-date>
+    <tui-error
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </form>
+
+  <div class="time_wrapper">
+    <p style="text-align: center; font-weight: 600; margin-bottom: 10px;">Время</p>
+    <div class="time">
+      <p>C</p>
+      <form
+        class="b-form"
+        [formGroup]="timeForm1"
+        style="width: 90px;"
+      >
+        <tui-input-time
+          tuiTextfieldSize="s"
+          formControlName="testValue"
+          [items]="items1"
+        >
+          Время
+        </tui-input-time>
+      </form>
+      <p>до</p>
+      <form
+        class="b-form"
+        [formGroup]="timeForm2"
+        style="width: 90px;"
+      >
+        <tui-input-time
+          tuiTextfieldSize="s"
+          formControlName="testValue"
+          [items]="items1"
+        >
+          Время
+        </tui-input-time>
+      </form>
+    </div>
+  </div>
+
+  <button
+    tuiButton
+    type="button"
+    class="button"
+    size="m"
+    style="font-size: 15px; width: 270px;"
+    appearance="green"
+    (click)="modalBookingCardService.close(); modalSuccessBookingService.open()"
+  >
+    <tui-svg
+      src="tuiIconCheckCircle"
+      class="icon"
+    ></tui-svg>
+    Забронировать
+  </button>
+</div>

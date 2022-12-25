@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
-import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Observable} from "rxjs";
+import {Device} from "../../interfaces";
+import {DeviceService} from "../../services/device.service";
 
 @Component({
   selector: 'app-list-devices-page',
@@ -9,27 +9,15 @@ import {TuiSheetOptions} from '@taiga-ui/addon-mobile';
   styleUrls: ['./list-devices-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ListDevicesPageComponent implements OnInit {
+export class ListDevicesPageComponent {
 
-  isPhonePortrait = false;
+  devices$: Observable<Device[]>
 
-  constructor(private responsive: BreakpointObserver) {
+  constructor(private deviceService: DeviceService) {
   }
 
-
   ngOnInit(): void {
-
-    this.responsive.observe(Breakpoints.HandsetPortrait)
-      .subscribe(result => {
-
-        this.isPhonePortrait = false;
-
-        if (result.matches) {
-          this.isPhonePortrait = true;
-        }
-
-      });
-
+    this.devices$ = this.deviceService.getDevicesShort()
   }
 
 }

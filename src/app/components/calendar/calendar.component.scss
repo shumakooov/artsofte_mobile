@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.date {
+  margin-left: 1rem;
+
+  &_empty {
+    color: var(--tui-text-03);
+  }
+}

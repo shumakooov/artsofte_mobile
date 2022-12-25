@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-dropdown-type',
-  templateUrl: './dropdown-type.component.html',
-  styleUrls: ['./dropdown-type.component.scss']
+  selector: 'app-dropdown-reason',
+  templateUrl: './dropdown-reason.component.html',
+  styleUrls: ['./dropdown-reason.component.scss'],
 })
-export class DropdownTypeComponent implements OnInit {
-
+export class DropdownReasonComponent implements OnInit {
   open = false;
 
   onClick(): void {

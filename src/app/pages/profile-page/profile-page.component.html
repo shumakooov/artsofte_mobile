@@ -1,1 +1,69 @@
-<p>profile-page works!</p>
+<div class="wrapper">
+  <div *ngIf="profileInfo$ | async as profileInfo">
+    <div
+      style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;">
+      <div class="container">
+        <img class="container_img"
+             src="https://www.meme-arsenal.com/memes/8e750b5ffb6a6d58cdb01341726ab3af.jpg">
+      </div>
+      <div class="container">
+        <p style="text-align: center; color: #2E62D9;">ID</p>
+        <p style="text-align: center;">{{profileInfo.id}}</p>
+      </div>
+    </div>
+
+    <p style="line-height: 18px; font-size: 18px; color: #434854; margin: 20px 0;">{{profileInfo.firstname}}</p>
+    <p style="line-height: 18px; font-size: 18px; color: #434854; margin: 20px 0;">{{profileInfo.secondname}}</p>
+
+    <p style="color: #2E62D9; margin-bottom: 0;">Ссылка на телеграм</p>
+
+    <p style="line-height: 18px; font-size: 18px; color: #434854; margin-bottom: 20px; margin-top: 5px;">@{{profileInfo.connectLink}}</p>
+  </div>
+
+  <button
+    tuiButton
+    type="button"
+    appearance="blue_outline"
+    size="m"
+    style="width: 100%; margin-bottom: 15px;"
+    (click)="modalBookingHistoryService.open()"
+  >
+    История бронирования
+  </button>
+
+  <button
+    tuiButton
+    type="button"
+    appearance="red_outline"
+    size="m"
+    style="width: 100%;"
+    (click)="modalDeviceProblemService.open()"
+  >
+    Отправить ошибку
+  </button>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 15px; margin-top: 15px; padding: 0 20px;">
+  <button
+    tuiButton
+    type="button"
+    style="width: 100%;"
+    appearance="red_outline"
+    (click)="logout()"
+  >
+    Выйти
+  </button>
+  <button
+    tuiButton
+    type="button"
+    style="width: 100%;"
+    appearance="blue_outline"
+    routerLink="/profile/edit"
+  >
+    Редактировать
+  </button>
+
+</div>
+
+<app-modal-booking-history *ngIf="modalBookingHistoryService.isVisible$ | async"></app-modal-booking-history>
+<app-modal-device-problem *ngIf="modalDeviceProblemService.isVisible$ | async"></app-modal-device-problem>
+
