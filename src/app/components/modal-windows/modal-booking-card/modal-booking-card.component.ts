@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ModalDeviceCardService} from "../../../services/modal-device-card.service";
-import {ModalBookingCardService} from "../../../services/modal-booking-card.service";
 import {tuiCreateTimePeriods} from "@taiga-ui/kit";
 import {ModalSuccessBookingService} from "../../../services/modal-success-booking.service";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Observable} from "rxjs";
+import {Device} from "../../../interfaces";
+import {DeviceService} from "../../../services/device.service";
 
 
 @Component({
@@ -24,11 +26,15 @@ export class ModalBookingCardComponent implements OnInit {
     testValue: new FormControl(null),
   });
 
-  constructor(public modalDeviceCardService: ModalDeviceCardService,
-              public modalBookingCardService: ModalBookingCardService,
-              public modalSuccessBookingService: ModalSuccessBookingService) { }
+  constructor(public modalSuccessBookingService: ModalSuccessBookingService,
+              @Optional() public dialogBooking: MatDialogRef<ModalBookingCardComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: number,
+              private deviceService: DeviceService) { }
+
+  device$: Observable<Device>
 
   ngOnInit(): void {
+    this.device$ = this.deviceService.getDevicesShortById(this.data)
   }
 
 }

@@ -1,9 +1,7 @@
-import {Component, OnInit, ChangeDetectionStrategy, Input} from '@angular/core';
-import {ModalDeviceCardService} from "../../services/modal-device-card.service";
-import {ModalCharacteristicDeviceService} from "../../services/modal-characteristic-device.service";
-import {ModalUsageHistoryService} from "../../services/modal-usage-history.service";
-import {ModalBookingCardService} from "../../services/modal-booking-card.service";
+import {Component, OnInit, ChangeDetectionStrategy, Input, Optional} from '@angular/core';
 import {ModalSuccessBookingService} from "../../services/modal-success-booking.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ModalDeviceCardComponent} from "../modal-windows/modal-device-card/modal-device-card.component";
 
 @Component({
   selector: 'app-device',
@@ -11,21 +9,28 @@ import {ModalSuccessBookingService} from "../../services/modal-success-booking.s
   styleUrls: ['./device.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DeviceComponent implements OnInit {
 
+export class DeviceComponent implements OnInit {
+  @Input() id: number;
   @Input() imgUrl: string;
   @Input() deviceName: string;
   @Input() os: string;
   @Input() diagonal: number;
   @Input() department: string;
 
-  constructor(public modalDeviceCardService: ModalDeviceCardService,
-              public modalCharacteristicDeviceService: ModalCharacteristicDeviceService,
-              public modalUsageHistoryService: ModalUsageHistoryService,
-              public modalBookingCardService: ModalBookingCardService,
-              public modalSuccessBookingService: ModalSuccessBookingService) { }
+  constructor(public modalSuccessBookingService: ModalSuccessBookingService,
+              @Optional() public dialog: MatDialog) { }
+
+  openCardDialog(): void {
+    const dialogCard = this.dialog.open(ModalDeviceCardComponent, {
+      data: this.id,
+      panelClass: 'custom-modalbox'
+    });
+
+  }
 
   ngOnInit(): void {
+
   }
 
 }

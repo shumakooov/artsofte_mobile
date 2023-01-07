@@ -61,6 +61,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -93,7 +94,7 @@ import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile
     DropdownTagComponent,
     CalendarComponent,
     LoginPageComponent,
-    EditProfilePageComponent
+    EditProfilePageComponent,
   ],
     imports: [
         BrowserModule,
@@ -123,7 +124,8 @@ import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile
         TuiHostedDropdownModule,
         TuiMultiSelectModule,
         TuiInputPasswordModule,
-        HttpClientModule
+        HttpClientModule,
+      MatDialogModule
     ],
   providers: [{provide: TUI_SANITIZER, useClass: NgDompurifySanitizer}],
   bootstrap: [AppComponent]

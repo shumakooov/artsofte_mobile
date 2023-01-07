@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalUsageHistoryService} from "../../../services/modal-usage-history.service";
-import {ModalDeviceCardService} from "../../../services/modal-device-card.service";
+import {Component, Inject, OnInit, Optional} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {DeviceService} from "../../../services/device.service";
 
 @Component({
   selector: 'app-modal-usage-history',
@@ -9,10 +9,14 @@ import {ModalDeviceCardService} from "../../../services/modal-device-card.servic
 })
 export class ModalUsageHistoryComponent implements OnInit {
 
-  constructor(public modalUsageHistoryService: ModalUsageHistoryService,
-              public modalDeviceCardService: ModalDeviceCardService) { }
+  constructor(@Optional() public dialogUsageHistory: MatDialogRef<ModalUsageHistoryComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: number,
+              private deviceService: DeviceService) { }
 
   ngOnInit(): void {
   }
 
+  closeUsageHistoryDialog(): void {
+    this.dialogUsageHistory.close();
+  }
 }

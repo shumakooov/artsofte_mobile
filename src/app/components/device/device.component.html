@@ -11,7 +11,7 @@
     type="button"
     class="button"
     style="height: 32px; font-size: 10px; width: 80%;"
-    (click)="modalDeviceCardService.open()"
+    (click)="openCardDialog()"
   >
     <tui-svg
       src="tuiIconCheckCircle"
@@ -21,9 +21,4 @@
   </button>
 </div>
 
-<app-modal-device-card *ngIf="modalDeviceCardService.isVisible$ | async"></app-modal-device-card>
-<app-modal-characteristic-device
-  *ngIf="modalCharacteristicDeviceService.isVisible$ | async"></app-modal-characteristic-device>
-<app-modal-usage-history *ngIf="modalUsageHistoryService.isVisible$ | async"></app-modal-usage-history>
-<app-modal-booking-card *ngIf="modalBookingCardService.isVisible$ | async"></app-modal-booking-card>
 <app-modal-success-booking *ngIf="modalSuccessBookingService.isVisible$ | async"></app-modal-success-booking>

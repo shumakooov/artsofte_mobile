@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, Input, OnInit, Optional} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ModalDeviceCardService} from "../../../services/modal-device-card.service";
-import {ModalCharacteristicDeviceService} from "../../../services/modal-characteristic-device.service";
-import {ModalUsageHistoryService} from "../../../services/modal-usage-history.service";
-import {ModalBookingCardService} from "../../../services/modal-booking-card.service";
+import {Observable} from "rxjs";
+import {Device} from "../../../interfaces";
+import {DeviceService} from "../../../services/device.service";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ModalBookingCardComponent} from "../modal-booking-card/modal-booking-card.component";
+import {ModalCharacteristicDeviceComponent} from "../modal-characteristic-device/modal-characteristic-device.component";
+import {ModalUsageHistoryComponent} from "../modal-usage-history/modal-usage-history.component";
 
 @Component({
   selector: 'app-modal-device-card',
@@ -11,16 +14,43 @@ import {ModalBookingCardService} from "../../../services/modal-booking-card.serv
   styleUrls: ['./modal-device-card.component.scss']
 })
 export class ModalDeviceCardComponent implements OnInit {
+  @Input() id: number;
 
   value = [`Xiaomi`, `Android`, `6,67"`, `MIUI`, `MI Браузер`];
   readonly control = new FormControl([]);
 
-  constructor(public modalDeviceCardService: ModalDeviceCardService,
-              public modalCharacteristicDeviceService: ModalCharacteristicDeviceService,
-              public modalUsageHistoryService: ModalUsageHistoryService,
-              public modalBookingCardService: ModalBookingCardService) { }
-
-  ngOnInit(): void {
+  constructor(private deviceService: DeviceService,
+              @Optional() public dialogCard: MatDialogRef<ModalDeviceCardComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: number,
+              @Optional() public dialog: MatDialog) {
   }
 
+ closeCardDialog(): void {
+    this.dialogCard.close();
+  }
+
+  device$: Observable<Device>
+
+  ngOnInit(): void {
+    this.device$ = this.deviceService.getDevicesShortById(this.data)
+  }
+
+  openBookingDialog(): void {
+    const dialogBooking = this.dialog.open(ModalBookingCardComponent, {
+      data: this.data,
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  openCharacteristicDialog(): void {
+    const dialogCharacteristic = this.dialog.open(ModalCharacteristicDeviceComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  openUsageHistoryDialog(): void {
+    const dialogUsageHistory = this.dialog.open(ModalUsageHistoryComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
 }

@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Device, User} from "../interfaces";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {tap} from "rxjs";
+import {Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -22,7 +22,7 @@ export class AuthService {
     // .pipe(tap(()=> this.loggedUser = undefined))
   }
 
-  isAuthenticated(){
-    return !!this.http.get<Device[]>(`${environment.API_URL}/device/info/short`, { withCredentials: true });
+  isAuthenticated(): Observable<boolean>{
+    return this.http.get<boolean>(`${environment.API_URL}/user/authorize`, { withCredentials: true });
   }
 }

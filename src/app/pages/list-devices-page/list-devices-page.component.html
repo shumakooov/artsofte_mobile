@@ -4,6 +4,7 @@
     <app-device
       class="device"
       *ngFor="let device of devices"
+      [id]="device.id"
       [imgUrl]="device.image"
       [deviceName]="device.name"
       [os]="device.os"

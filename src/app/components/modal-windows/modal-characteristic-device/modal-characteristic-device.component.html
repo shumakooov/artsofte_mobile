@@ -1,9 +1,5 @@
-<div
-  class="back_side"
-  (click)="modalCharacteristicDeviceService.close()"
-></div>
-
 <div class="wrapper">
+  <div>
   <h3 style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">Характеристики</h3>
   <h3 style="font-size: 12px;">Экран</h3>
   <p style="font-size: 12px;"><span>Диагональ экрана (дюйм)</span><span>6.67"</span></p>
@@ -23,16 +19,16 @@
   <span>3x Kryo 485 (Cortex-A76) 2.42 ГГц, 4x Kryo 485 (Cortex-A55) 1.8 ГГц, 1x Kryo 485 (Cortex-A76) 2.96 ГГц</span></p>
   <p style="font-size: 12px;"><span>Техпроцесс</span><span>7 нм</span></p>
   <p style="font-size: 12px;"><span>Графический ускоритель</span><span>Adreno 640</span></p>
-
+  </div>
 
   <button
     tuiButton
     type="button"
     class="button"
     size="m"
-    style="font-size: 15px; width: 270px; justify-content: center; align-self: center;"
+    style="font-size: 15px; width: 100%;"
     appearance="red_outline"
-    (click)="modalCharacteristicDeviceService.close(); modalDeviceCardService.open()"
+    (click)="closeCharacteristicDialog()"
   >
     Назад
   </button>

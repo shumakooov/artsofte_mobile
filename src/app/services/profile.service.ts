@@ -1,7 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {environment} from "../../environments/environment";
-import {Device, Profile} from "../interfaces";
+import {BookedDevice, Device, Profile} from "../interfaces";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -17,5 +17,9 @@ export class ProfileService {
 
   getProfileInfo(): Observable<Profile>{
     return this.http.get<Profile>(`${environment.API_URL}/profile`, {withCredentials: true} )
+  }
+
+  getBookingHistory(): Observable<BookedDevice[]> {
+    return this.http.get<BookedDevice[]>(`${environment.API_URL}/records/history/user`, { withCredentials: true })
   }
 }

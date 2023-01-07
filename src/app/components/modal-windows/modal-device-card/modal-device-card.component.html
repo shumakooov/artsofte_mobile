@@ -1,20 +1,18 @@
-<div
-  class="back_side"
-  (click)="modalDeviceCardService.close()"
-></div>
-
 <div class="wrapper">
 
-  <div style="display: grid; grid-template-columns: 2fr 3fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;">
+  <div
+    style="display: grid; grid-template-columns: 2fr 3fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;"
+    *ngIf="device$ | async as device"
+  >
     <div class="container">
       <img class="container_img"
-           src="https://cdn.fotosklad.ru/upload/iblock/4c7/4c7ffb9c9517a423ddd05daabf243782_thumb_4d76a05b13f4590.jpg">
+           [src]="device.image">
     </div>
     <div class="container_spec">
-      <p style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">POCO X3 PRO</p>
-      <p style="text-align: center; font-size: 10px; line-height: 13px;">OS: MIUI, Android 11</p>
-      <p style="text-align: center; font-size: 10px; line-height: 13px;">Диагональ: 6.67"</p>
-      <p style="text-align: center; font-size: 10px; line-height: 13px;">Отдел: ...</p>
+      <p style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">{{device.name}}</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">OS: {{device.os}}</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">Диагональ: {{device.diagonal}}</p>
+      <p style="text-align: center; font-size: 10px; line-height: 13px;">Отдел: {{device.department.name}}</p>
     </div>
   </div>
 
@@ -36,7 +34,7 @@
     appearance="blue_outline"
     size="m"
     style="font-size: 15px; width: 270px; margin-bottom: 15px; margin-top: 15px;"
-    (click)="modalDeviceCardService.close(); modalCharacteristicDeviceService.open()"
+    (click)="openCharacteristicDialog()"
   >
     Подробнее
   </button>
@@ -48,7 +46,7 @@
     appearance="blue_outline"
     size="m"
     style="font-size: 15px; width: 270px; margin-bottom: 15px;"
-    (click)="modalDeviceCardService.close(); modalUsageHistoryService.open()"
+    (click)="openUsageHistoryDialog()"
   >
     История использований
   </button>
@@ -60,7 +58,6 @@
     appearance="blue_outline"
     size="m"
     style="font-size: 15px; width: 270px; margin-bottom: 15px;"
-    (click)="modalDeviceCardService.close()"
   >
     Календарь устройства
   </button>
@@ -71,7 +68,7 @@
     class="button"
     size="m"
     style="font-size: 15px; width: 270px;"
-    (click)="modalDeviceCardService.close(); modalBookingCardService.open()"
+    (click)="openBookingDialog(); closeCardDialog()"
   >
     <tui-svg
       src="tuiIconCheckCircle"

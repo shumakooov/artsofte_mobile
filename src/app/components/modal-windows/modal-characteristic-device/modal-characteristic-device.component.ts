@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalCharacteristicDeviceService} from "../../../services/modal-characteristic-device.service";
-import {ModalDeviceCardService} from "../../../services/modal-device-card.service";
+import {Component, Inject, OnInit, Optional} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {DeviceService} from "../../../services/device.service";
 
 @Component({
   selector: 'app-modal-characteristic-device',
@@ -9,10 +9,15 @@ import {ModalDeviceCardService} from "../../../services/modal-device-card.servic
 })
 export class ModalCharacteristicDeviceComponent implements OnInit {
 
-  constructor(public modalCharacteristicDeviceService: ModalCharacteristicDeviceService,
-              public modalDeviceCardService: ModalDeviceCardService) { }
+  constructor(@Optional() public dialogCharacteristic: MatDialogRef<ModalCharacteristicDeviceComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: number,
+              private deviceService: DeviceService) { }
 
   ngOnInit(): void {
+  }
+
+  closeCharacteristicDialog(): void {
+    this.dialogCharacteristic.close();
   }
 
 }
