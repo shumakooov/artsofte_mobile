@@ -62,6 +62,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import { EditProfilePageComponent } from './pages/edit-profile-page/edit-profile-page.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {HomeLayoutComponent} from "./layouts/home-layout/home-layout.component";
+import {LoginLayoutComponent} from "./layouts/login-layout/login-layout.component";
 
 
 @NgModule({
@@ -95,6 +97,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     CalendarComponent,
     LoginPageComponent,
     EditProfilePageComponent,
+    HomeLayoutComponent,
+    LoginLayoutComponent
   ],
     imports: [
         BrowserModule,
