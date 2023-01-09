@@ -1,6 +1,6 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, Optional} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ModalDeviceProblemService} from "../../../services/modal-device-problem.service";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-modal-device-problem',
@@ -14,9 +14,11 @@ export class ModalDeviceProblemComponent implements OnInit {
     testValue2: new FormControl(`This one can be expanded`, Validators.required),
   });
 
-  constructor(public modalDeviceProblemService: ModalDeviceProblemService) { }
+  constructor(@Optional() public dialogProblem: MatDialogRef<ModalDeviceProblemComponent>,) { }
 
   ngOnInit(): void {
   }
-
+  closeProblemDialog(): void {
+    this.dialogProblem.close();
+  }
 }

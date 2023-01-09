@@ -1,10 +1,5 @@
-<div
-  class="back_side"
-  (click)="modalCancelReserveService.close()"
-></div>
-
 <div class="container">
-  <p style="color: #2E62D9; font-size: 15px;">Вы успешно отменили бронь</p>
+  <p style="color: #2E62D9; font-size: 15px; margin-top: 0;">Вы успешно отменили бронь</p>
     <button
       tuiButton
       type="button"
@@ -12,7 +7,7 @@
       appearance="green_outline"
       size="m"
       style="font-size: 15px; width: 40%;"
-      (click)="modalCancelReserveService.close()"
+      (click)="closeCancelReserveDialog()"
     >
       Ок
     </button>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalReturnDeviceService} from "../../../services/modal-return-device.service";
+import {Component, OnInit, Optional} from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-modal-return-device',
@@ -8,9 +8,13 @@ import {ModalReturnDeviceService} from "../../../services/modal-return-device.se
 })
 export class ModalReturnDeviceComponent implements OnInit {
 
-  constructor(public modalReturnDeviceService: ModalReturnDeviceService) { }
+  constructor(@Optional() public dialogReturn: MatDialogRef<ModalReturnDeviceComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  closeReturn() {
+    this.dialogReturn.close()
   }
 
 }

@@ -1,11 +1,6 @@
-<div
-  class="back_side"
-  (click)="modalReturnDeviceService.close()"
-></div>
-
 <div class="container">
-  <p style="color: #2E62D9; font-size: 15px;">Вы успешно сдали устройство</p>
-  <p style="font-size: 13px;">Не забудьте отнести устройство на базу</p>
+  <p style="color: #2E62D9; font-size: 15px; margin-top: 0;">Вы успешно сдали устройство</p>
+  <p style="font-size: 13px; margin-top: 0;">Не забудьте отнести устройство на базу</p>
     <button
       tuiButton
       type="button"
@@ -13,7 +8,7 @@
       appearance="green_outline"
       size="m"
       style="font-size: 15px; width: 40%;"
-      (click)="modalReturnDeviceService.close()"
+      (click)="closeReturn()"
     >
       Ок
     </button>

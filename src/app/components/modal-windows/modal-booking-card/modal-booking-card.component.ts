@@ -1,11 +1,12 @@
 import {Component, Inject, OnInit, Optional} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {tuiCreateTimePeriods} from "@taiga-ui/kit";
-import {ModalSuccessBookingService} from "../../../services/modal-success-booking.service";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Observable} from "rxjs";
 import {Device} from "../../../interfaces";
 import {DeviceService} from "../../../services/device.service";
+import {ModalDeviceCardComponent} from "../modal-device-card/modal-device-card.component";
+import {ModalSuccessBookingComponent} from "../modal-success-booking/modal-success-booking.component";
 
 
 @Component({
@@ -26,8 +27,8 @@ export class ModalBookingCardComponent implements OnInit {
     testValue: new FormControl(null),
   });
 
-  constructor(public modalSuccessBookingService: ModalSuccessBookingService,
-              @Optional() public dialogBooking: MatDialogRef<ModalBookingCardComponent>,
+  constructor(@Optional() public dialogBooking: MatDialogRef<ModalBookingCardComponent>,
+              @Optional() public dialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) public data: number,
               private deviceService: DeviceService) { }
 
@@ -35,6 +36,12 @@ export class ModalBookingCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.device$ = this.deviceService.getDevicesShortById(this.data)
+  }
+
+  openSuccessBookingDialog(): void {
+    const dialogCard = this.dialog.open(ModalSuccessBookingComponent, {
+      panelClass: 'custom-modalbox'
+    });
   }
 
 }

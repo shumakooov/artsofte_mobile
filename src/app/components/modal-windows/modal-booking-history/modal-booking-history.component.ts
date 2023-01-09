@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalBookingHistoryService} from "../../../services/modal-booking-history.service";
+import {Component, OnInit, Optional} from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-modal-booking-history',
@@ -8,7 +8,11 @@ import {ModalBookingHistoryService} from "../../../services/modal-booking-histor
 })
 export class ModalBookingHistoryComponent implements OnInit {
 
-  constructor(public modalBookingHistoryService: ModalBookingHistoryService) { }
+  constructor(@Optional() public dialogBookingHistory: MatDialogRef<ModalBookingHistoryComponent>) { }
+
+  closeBookingHistoryDialog(): void {
+    this.dialogBookingHistory.close();
+  }
 
   ngOnInit(): void {
   }

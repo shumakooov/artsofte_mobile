@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ModalCancelReserveService} from "../../services/modal-cancel-reserve.service";
 
 @Component({
   selector: 'app-booked-devices-page',

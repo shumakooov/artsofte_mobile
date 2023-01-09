@@ -1,10 +1,5 @@
-<div
-  class="back_side"
-  (click)="modalDeviceProblemService.close()"
-></div>
-
 <div class="container">
-  <p style="color: #2E62D9; font-size: 15px; margin-bottom: 15px;">Опишите проблему</p>
+  <p style="color: #2E62D9; font-size: 15px; margin-bottom: 15px; margin-top: 0;">Опишите проблему</p>
   <app-dropdown-reason></app-dropdown-reason>
 
   <form
@@ -33,7 +28,7 @@
       appearance="green_outline"
       size="m"
       style="font-size: 15px; width: 130px;"
-      (click)="modalDeviceProblemService.close()"
+      (click)="closeProblemDialog()"
     >
       Отправить
     </button>
@@ -44,7 +39,7 @@
       appearance="red_outline"
       size="m"
       style="font-size: 15px; width: 130px;"
-      (click)="modalDeviceProblemService.close()"
+      (click)="closeProblemDialog()"
     >
       Отмена
     </button>

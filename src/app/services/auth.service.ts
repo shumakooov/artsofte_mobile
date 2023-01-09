@@ -8,18 +8,15 @@ import {Observable, tap} from "rxjs";
   providedIn: "root"
 })
 export class AuthService {
-  private loggedUser: User | undefined;
-
   constructor(private http: HttpClient) {
   }
 
   login(user: User) {
-    return this.http.post<any>(`${environment.API_URL}/user/login`, user, { withCredentials: true }).pipe(tap(data => this.loggedUser = data))
+    return this.http.post<any>(`${environment.API_URL}/user/login`, user, { withCredentials: true })
   }
 
   logout() {
-    return this.http.get<any>(`${environment.API_URL}/user/logout`)
-    // .pipe(tap(()=> this.loggedUser = undefined))
+    return this.http.get<any>(`${environment.API_URL}/user/logout`, { withCredentials: true })
   }
 
   isAuthenticated(): Observable<boolean>{

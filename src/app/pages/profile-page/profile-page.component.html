@@ -26,7 +26,7 @@
     appearance="blue_outline"
     size="m"
     style="width: 100%; margin-bottom: 15px;"
-    (click)="modalBookingHistoryService.open()"
+    (click)="openBookingHistoryDialog()"
   >
     История бронирования
   </button>
@@ -37,7 +37,7 @@
     appearance="red_outline"
     size="m"
     style="width: 100%;"
-    (click)="modalDeviceProblemService.open()"
+    (click)="openProblemDialog()"
   >
     Отправить ошибку
   </button>
@@ -63,7 +63,3 @@
   </button>
 
 </div>
-
-<app-modal-booking-history *ngIf="modalBookingHistoryService.isVisible$ | async"></app-modal-booking-history>
-<app-modal-device-problem *ngIf="modalDeviceProblemService.isVisible$ | async"></app-modal-device-problem>
-

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalCancelReserveService} from "../../../services/modal-cancel-reserve.service";
+import {Component, OnInit, Optional} from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-modal-cancel-reserve',
@@ -8,9 +8,13 @@ import {ModalCancelReserveService} from "../../../services/modal-cancel-reserve.
 })
 export class ModalCancelReserveComponent implements OnInit {
 
-  constructor(public modalCancelReserveService: ModalCancelReserveService) { }
+  constructor(@Optional() public dialogCancelReserve: MatDialogRef<ModalCancelReserveComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  closeCancelReserveDialog(): void {
+    this.dialogCancelReserve.close()
   }
 
 }

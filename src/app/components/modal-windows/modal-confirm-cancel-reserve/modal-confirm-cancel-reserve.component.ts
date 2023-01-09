@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalCancelReserveService} from "../../../services/modal-cancel-reserve.service";
-import {ModalConfirmCancelReserveService} from "../../../services/modal-confirm-cancel-reserve.service";
+import {Component, OnInit, Optional} from '@angular/core';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ModalCancelReserveComponent} from "../modal-cancel-reserve/modal-cancel-reserve.component";
 
 @Component({
   selector: 'app-modal-confirm-cancel-reserve',
@@ -9,10 +9,19 @@ import {ModalConfirmCancelReserveService} from "../../../services/modal-confirm-
 })
 export class ModalConfirmCancelReserveComponent implements OnInit {
 
-  constructor(public modalCancelReserveService: ModalCancelReserveService,
-              public modalConfirmCancelReserveService: ModalConfirmCancelReserveService) { }
+  constructor(@Optional() public dialogCancelReserve: MatDialogRef<ModalConfirmCancelReserveComponent>,
+              @Optional() public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  closeConfirmCancelReserveDialog(): void {
+    this.dialogCancelReserve.close()
+  }
+
+  openCancelReserveDialog(): void {
+    const dialogCard = this.dialog.open(ModalCancelReserveComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
 }

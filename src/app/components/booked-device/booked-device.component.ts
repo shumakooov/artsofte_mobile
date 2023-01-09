@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalCancelReserveService} from "../../services/modal-cancel-reserve.service";
-import {ModalReturnDeviceService} from "../../services/modal-return-device.service";
-import {ModalDeviceProblemService} from "../../services/modal-device-problem.service";
-import {ModalConfirmReturnDeviceService} from "../../services/modal-confirm-return-device.service";
-import {ModalConfirmCancelReserveService} from "../../services/modal-confirm-cancel-reserve.service";
+import {Component, OnInit, Optional} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {ModalDeviceProblemComponent} from "../modal-windows/modal-device-problem/modal-device-problem.component";
+import {ModalConfirmCancelReserveComponent} from "../modal-windows/modal-confirm-cancel-reserve/modal-confirm-cancel-reserve.component";
+import {ModalConfirmReturnDeviceComponent} from "../modal-windows/modal-confirm-return-device/modal-confirm-return-device.component";
 
 @Component({
   selector: 'app-booked-device',
@@ -12,13 +11,28 @@ import {ModalConfirmCancelReserveService} from "../../services/modal-confirm-can
 })
 export class BookedDeviceComponent implements OnInit {
 
-  constructor(public modalCancelReserveService: ModalCancelReserveService,
-              public modalReturnDeviceService: ModalReturnDeviceService,
-              public modalDeviceProblemService: ModalDeviceProblemService,
-              public modalConfirmReturnDeviceService: ModalConfirmReturnDeviceService,
-              public modalConfirmCancelReserveService: ModalConfirmCancelReserveService) { }
+  constructor(@Optional() public dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
+  }
+
+  openProblemDialog(): void {
+    this.dialog.open(ModalDeviceProblemComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  openConfirmCancelReserveDialog(): void {
+    this.dialog.open(ModalConfirmCancelReserveComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  openConfirmReturnDeviceDialog(): void {
+    this.dialog.open(ModalConfirmReturnDeviceComponent, {
+      panelClass: 'custom-modalbox'
+    });
   }
 
 }

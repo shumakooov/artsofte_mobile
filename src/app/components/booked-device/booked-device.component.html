@@ -14,7 +14,7 @@
       size="s"
       style="font-size: 10px; width: 55px; --tui-padding: 0.5rem"
       appearance="accent"
-      (click)="modalDeviceProblemService.open()"
+      (click)="openProblemDialog()"
     >
       <tui-svg
         src="tuiIconAttention"
@@ -27,13 +27,9 @@
       class="button"
       size="s"
       style="font-size: 10px; width: 55px; --tui-padding: 0.5rem"
-      (click)="modalConfirmCancelReserveService.open()"
+      (click)="openConfirmCancelReserveDialog()"
     >
-      <tui-svg
-        src="tuiIconClose"
-        class="icon"
-        style="padding: 0; margin: 0;"
-      ></tui-svg>
+      <img src="../../../assets/close.svg">
     </button>
   </div>
   <button
@@ -43,7 +39,7 @@
     appearance="green"
     size="s"
     style="font-size: 10px; width: 80%; margin-top: 10px"
-    (click)="modalConfirmReturnDeviceService.open()"
+    (click)="openConfirmReturnDeviceDialog()"
   >
     <tui-svg
       src="tuiIconCheckCircle"
@@ -51,9 +47,3 @@
     ></tui-svg>
   </button>
 </div>
-
-<app-modal-cancel-reserve *ngIf="modalCancelReserveService.isVisible$ | async"></app-modal-cancel-reserve>
-<app-modal-return-device *ngIf="modalReturnDeviceService.isVisible$ | async"></app-modal-return-device>
-<app-modal-device-problem *ngIf="modalDeviceProblemService.isVisible$ | async"></app-modal-device-problem>
-<app-modal-confirm-return-device *ngIf="modalConfirmReturnDeviceService.isVisible$ | async"></app-modal-confirm-return-device>
-<app-modal-confirm-cancel-reserve *ngIf="modalConfirmCancelReserveService.isVisible$ | async"></app-modal-confirm-cancel-reserve>

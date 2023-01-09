@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import {ModalBookingHistoryService} from "../../services/modal-booking-history.service";
-import {ModalDeviceProblemService} from "../../services/modal-device-problem.service";
+import {Component, OnInit, Optional} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {ProfileService} from "../../services/profile.service";
 import {Observable} from "rxjs";
 import {Profile} from "../../interfaces";
+import {
+  ModalDeviceProblemComponent
+} from "../../components/modal-windows/modal-device-problem/modal-device-problem.component";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  ModalBookingHistoryComponent
+} from "../../components/modal-windows/modal-booking-history/modal-booking-history.component";
 
 @Component({
   selector: 'app-profile-page',
@@ -14,11 +19,11 @@ import {Profile} from "../../interfaces";
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor(public modalBookingHistoryService: ModalBookingHistoryService,
-              public modalDeviceProblemService: ModalDeviceProblemService,
-              private router: Router,
+  constructor(private router: Router,
               private auth: AuthService,
-              private profileService: ProfileService) { }
+              private profileService: ProfileService,
+              @Optional() public dialog: MatDialog,) {
+  }
 
   profileInfo$: Observable<Profile>
 
@@ -26,10 +31,24 @@ export class ProfilePageComponent implements OnInit {
     this.profileInfo$ = this.profileService.getProfileInfo()
   }
 
+  openProblemDialog(): void {
+    this.dialog.open(ModalDeviceProblemComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  openBookingHistoryDialog(): void {
+    this.dialog.open(ModalBookingHistoryComponent, {
+      panelClass: 'custom-modalbox'
+    });
+  }
+
   logout() {
     this.auth.logout().subscribe(
       () => this.router.navigate(['/login']),
-      error => {console.warn(error)}
+      error => {
+        console.warn(error)
+      }
     )
   }
 
