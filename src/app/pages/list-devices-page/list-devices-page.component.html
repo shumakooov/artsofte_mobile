@@ -3,7 +3,7 @@
   <div class="wrapper" *ngIf="devices$ | async as devices">
     <app-device
       class="device"
-      *ngFor="let device of devices"
+      *ngFor="let device of devices | filter:searchKey:'name'"
       [id]="device.id"
       [imgUrl]="device.image"
       [deviceName]="device.name"

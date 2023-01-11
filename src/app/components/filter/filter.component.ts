@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {TuiDay} from "@taiga-ui/cdk";
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import {DeviceService} from "../../services/device.service";
 
 @Component({
   selector: 'app-filter',
@@ -11,6 +12,11 @@ import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterComponent implements OnInit {
+  public searchTerm: string;
+  search(event: any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    this.deviceService.search.next(this.searchTerm);
+  }
 
   //Range, выбор диагонали
   rangeValue = [20, 30];
@@ -24,8 +30,8 @@ export class FilterComponent implements OnInit {
   });
 
   //Dialog
-  constructor(
-    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+  constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+              private deviceService: DeviceService
   ) {}
 
   onClick(

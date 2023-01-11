@@ -1,8 +1,14 @@
 <div style="padding-bottom: 10vh">
   <app-filter></app-filter>
-  <div class="wrapper">
-    <app-booked-device></app-booked-device>
-    <app-booked-device></app-booked-device>
-    <app-booked-device></app-booked-device>
+  <div class="wrapper"  *ngIf="bookedDevices$ | async as bookedDevices">
+    <app-booked-device
+      *ngFor="let bookedDevice of bookedDevices | filterBooked:searchKey:'device':'name'"
+      [idRecord]="bookedDevice.id"
+      [imgUrl]="bookedDevice.device.imgPath"
+      [deviceName]="bookedDevice.device.name"
+      [timeFrom]="bookedDevice.timeFrom"
+      [timeTo]="bookedDevice.timeTo"
+      [date]="bookedDevice.date"
+    ></app-booked-device>
   </div>
 </div>

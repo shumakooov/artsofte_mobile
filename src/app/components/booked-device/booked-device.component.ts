@@ -1,4 +1,4 @@
-import {Component, OnInit, Optional} from '@angular/core';
+import {Component, Input, OnInit, Optional} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {ModalDeviceProblemComponent} from "../modal-windows/modal-device-problem/modal-device-problem.component";
 import {ModalConfirmCancelReserveComponent} from "../modal-windows/modal-confirm-cancel-reserve/modal-confirm-cancel-reserve.component";
@@ -10,6 +10,12 @@ import {ModalConfirmReturnDeviceComponent} from "../modal-windows/modal-confirm-
   styleUrls: ['./booked-device.component.scss']
 })
 export class BookedDeviceComponent implements OnInit {
+  @Input() imgUrl: string;
+  @Input() deviceName: string;
+  @Input() timeFrom: string;
+  @Input() timeTo: string;
+  @Input() date: string;
+  @Input() idRecord: number;
 
   constructor(@Optional() public dialog: MatDialog) {
   }
@@ -25,6 +31,7 @@ export class BookedDeviceComponent implements OnInit {
 
   openConfirmCancelReserveDialog(): void {
     this.dialog.open(ModalConfirmCancelReserveComponent, {
+      data: this.idRecord,
       panelClass: 'custom-modalbox'
     });
   }

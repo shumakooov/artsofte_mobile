@@ -14,20 +14,14 @@
     </div>
   </div>
 
-  <form
-    class="b-form"
-    [tuiTextfieldCleaner]="true"
-    style="margin-bottom: 15px; width: 270px;"
-  >
-    <tui-input-date
-      tuiUnfinishedValidator="Finish filling the field"
-    >
-      Choose a date
-    </tui-input-date>
-    <tui-error
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
-  </form>
+  <div style="width: 100%;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" [formControl]="calendarValue">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
 
   <div class="time_wrapper">
     <p style="text-align: center; font-weight: 600; margin-bottom: 10px;">Время</p>
@@ -35,30 +29,32 @@
       <p>C</p>
       <form
         class="b-form"
-        [formGroup]="timeForm1"
         style="width: 90px;"
+        [formGroup]="timeStartForm"
       >
-        <tui-input-time
-          tuiTextfieldSize="s"
-          formControlName="testValue"
-          [items]="items1"
-        >
-          Время
-        </tui-input-time>
+        <mat-form-field appearance="legacy" style="width: 80px">
+          <mat-label>Время</mat-label>
+          <mat-select formControlName="timeStart">
+            <mat-option *ngFor="let time of times" [value]="time">
+              {{time}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </form>
       <p>до</p>
       <form
         class="b-form"
-        [formGroup]="timeForm2"
         style="width: 90px;"
+        [formGroup]="timeFinishForm"
       >
-        <tui-input-time
-          tuiTextfieldSize="s"
-          formControlName="testValue"
-          [items]="items1"
-        >
-          Время
-        </tui-input-time>
+        <mat-form-field appearance="legacy" style="width: 80px">
+          <mat-label>Время</mat-label>
+          <mat-select formControlName="timeFinish">
+            <mat-option *ngFor="let time of times" [value]="time">
+              {{time}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </form>
     </div>
   </div>
@@ -70,7 +66,7 @@
     size="m"
     style="font-size: 15px; width: 270px;"
     appearance="green"
-    (click)="openSuccessBookingDialog()"
+    (click)="openSuccessBookingDialog(); recordDevice()"
   >
     <tui-svg
       src="tuiIconCheckCircle"

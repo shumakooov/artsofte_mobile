@@ -10,7 +10,7 @@ import {DeviceService} from "../../services/device.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListDevicesPageComponent {
-
+  searchKey: string = "";
   devices$: Observable<Device[]>
 
   constructor(private deviceService: DeviceService) {
@@ -18,6 +18,10 @@ export class ListDevicesPageComponent {
 
   ngOnInit(): void {
     this.devices$ = this.deviceService.getDevicesShort()
+
+    this.deviceService.search.subscribe((value) => {
+      this.searchKey = value;
+    })
   }
 
 }

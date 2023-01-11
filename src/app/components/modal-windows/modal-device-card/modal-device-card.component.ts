@@ -36,7 +36,7 @@ export class ModalDeviceCardComponent implements OnInit {
   }
 
   openBookingDialog(): void {
-    const dialogBooking = this.dialog.open(ModalBookingCardComponent, {
+    this.dialog.open(ModalBookingCardComponent, {
       data: this.data,
       panelClass: 'custom-modalbox'
     });

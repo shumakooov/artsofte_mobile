@@ -14,7 +14,7 @@ import {map, startWith, withLatestFrom} from 'rxjs/operators';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent {
-  private readonly control = new FormControl(new TuiDay(2020, 9, 3));
+  private readonly control = new FormControl();
 
   private readonly dialog$: Observable<TuiDay>;
 

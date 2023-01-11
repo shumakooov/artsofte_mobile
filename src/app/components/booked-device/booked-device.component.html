@@ -1,11 +1,10 @@
 <div class="item">
-  <img src="https://cdn.fotosklad.ru/upload/iblock/4c7/4c7ffb9c9517a423ddd05daabf243782_thumb_4d76a05b13f4590.jpg"
+  <img [src]="imgUrl"
        class="item_img"
   />
-  <p style="line-height: 13px; font-weight: 700; color: #434854;">POCO X3 PRO</p>
-  <p style="line-height: 13px; color: #434854;">04.11.2022</p>
-  <p style="line-height: 13px; color: #434854;">10:00 - 22:00</p>
-  <p style="line-height: 13px; color: #434854;">Отдел</p>
+  <p style="line-height: 13px; font-weight: 700; color: #434854;">{{deviceName}}</p>
+  <p style="line-height: 13px; color: #434854;">{{date}}</p>
+  <p style="line-height: 13px; color: #434854;">{{timeFrom}} - {{timeTo}}</p>
   <div style="display: grid; grid-template-columns: 1fr 1fr; justify-items: center; margin: 0 10%">
     <button
       tuiButton
