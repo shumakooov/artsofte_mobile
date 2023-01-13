@@ -65,7 +65,7 @@ export class ModalBookingCardComponent implements OnInit {
   }
 
   recordDevice(){
-      let date = this.calendarValue.value?.toISOString().split('T')[0].split('-')
+      let date = this.calendarValue.value?.toISOString().split('T')[0]
 
     const record = {
       deviceid: this.data,
@@ -74,6 +74,7 @@ export class ModalBookingCardComponent implements OnInit {
       timeto: date + 'T' + this.timeFinishForm.value.timeFinish + ':00'
     }
     this.deviceService.doRecordDevice(record).subscribe(()=>{
+      location.reload()
         },
       error => {
         this.alertService.open(error.error.message).subscribe();
