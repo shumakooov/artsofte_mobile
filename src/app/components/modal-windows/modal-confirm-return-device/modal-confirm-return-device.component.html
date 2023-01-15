@@ -1,7 +1,17 @@
 <div class="container">
-  <p style="color: #2E62D9; font-size: 15px; margin-top: 0; text-align: center">Выберите отдел, куда отнесете устройство</p>
+  <p style="color: #2E62D9; font-size: 15px; margin-top: 0; text-align: center">Выберите отдел, куда отнесете<br>устройство</p>
   <div style="width: 100%;">
-  <app-dropdown-department (onClick)="handleDept($event)"  style="width: 100%"></app-dropdown-department>
+<!--  <app-dropdown-department-material (onClick)="handleDept($event)"  style="width: 100%"></app-dropdown-department-material>-->
+    <mat-form-field appearance="outline" style="width: 100%" >
+      <mat-label>Отдел</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let dept of depts" [(ngModel)]="value" (ngModelChange)="handleDept(dept.id)" [value]="dept.id">
+          {{dept.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
   </div>
   <div class="buttons">
     <button

@@ -29,8 +29,6 @@ export class ModalConfirmCancelReserveComponent implements OnInit {
   }
 
   cancelBookedDevice() {
-    this.deviceService.cancelBookedDeviceByRecordId(this.data).subscribe(()=>{
-      location.reload()
-    })
+    this.deviceService.cancelBookedDeviceByRecordId(this.data).subscribe()
   }
 }

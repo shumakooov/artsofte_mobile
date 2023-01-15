@@ -1,0 +1,8 @@
+<mat-form-field appearance="outline" style="width: 100%" >
+  <mat-label>Отдел</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let dept of depts" [value]="dept.id">
+      {{dept.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

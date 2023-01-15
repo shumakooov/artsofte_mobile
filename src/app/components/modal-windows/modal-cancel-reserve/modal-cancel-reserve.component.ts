@@ -17,4 +17,7 @@ export class ModalCancelReserveComponent implements OnInit {
     this.dialogCancelReserve.close()
   }
 
+  reloadLocation(){
+    location.reload()
+  }
 }

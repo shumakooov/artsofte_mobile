@@ -1,17 +1,15 @@
 <tui-multi-select
-  tuiTextfieldSize="s"
-  *tuiLet="items$ | async as items"
+  placeholder="Ignored text"
   style="margin-bottom: 15px;"
+  tuiTextfieldSize="s"
   [formControl]="control"
   [tuiTextfieldLabelOutside]="true"
-  [stringify]="(stringify$ | async)!"
-  (searchChange)="onSearch($event)"
+  [editable]="false"
 >
   Тег
   <tui-data-list-wrapper
     *tuiDataList
     tuiMultiSelectGroup
-    [items]="items"
-    [itemContent]="(stringify$ | async)!"
+    [items]="tags"
   ></tui-data-list-wrapper>
 </tui-multi-select>

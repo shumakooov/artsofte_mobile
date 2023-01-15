@@ -1,18 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {TUI_DEFAULT_MATCHER, TuiContextWithImplicit, TuiHandler, tuiIsNumber} from '@taiga-ui/cdk';
-import {TUI_ARROW} from "@taiga-ui/kit";
-import {mapTo, Observable, shareReplay, Subject, switchMap, timer} from 'rxjs';
-import {map, startWith} from "rxjs/operators";
 import {FormControl} from "@angular/forms";
-
-const DICTIONARY = [
-  {id: 1, name: `Tag1`},
-  {id: 2, name: `Tag2`},
-  {id: 3, name: `Tag3`},
-  {id: 4, name: `Tag4`},
-  {id: 5, name: `Tag5`},
-  {id: 6, name: `Tag6`},
-];
+import {FilterService} from "../../../services/filter.service";
 
 @Component({
   selector: 'app-dropdown-tag',
@@ -21,48 +9,13 @@ const DICTIONARY = [
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownTagComponent implements OnInit {
-  private readonly search$ = new Subject<string>();
-
-  private readonly server$ = timer(1000).pipe(
-    mapTo(DICTIONARY),
-    shareReplay({bufferSize: 1, refCount: true}),
-  );
-
-  // Items only hold IDs
-  readonly items$ = this.search$.pipe(
-    startWith(``),
-    switchMap(search =>
-      this.server$.pipe(
-        map(items =>
-          items
-            .filter(({name}) => TUI_DEFAULT_MATCHER(name, search))
-            .map(({id}) => id),
-        ),
-      ),
-    ),
-    startWith(null), // <-- loading
-  );
-
-  // Stringify mapper that turns IDs to names
-  readonly stringify$: Observable<
-    TuiHandler<TuiContextWithImplicit<number> | number, string>
-  > = this.server$.pipe(
-    map(items => new Map(items.map<[number, string]>(({id, name}) => [id, name]))),
-    startWith(new Map()),
-    map(
-      map => (id: TuiContextWithImplicit<number> | number) =>
-        (tuiIsNumber(id) ? map.get(id) : map.get(id.$implicit)) || `Loading...`,
-    ),
-  );
-
   readonly control = new FormControl();
 
-  onSearch(search: string | null): void {
-    this.search$.next(search || ``);
-  }
-
-  constructor() { }
-
+  tags: string[]
+  constructor(private filterService: FilterService) { }
   ngOnInit(): void {
+    this.filterService.getFilters().subscribe(filters => {
+      this.tags = filters.tags.map(value => {return value.name})
+    })
   }
 }

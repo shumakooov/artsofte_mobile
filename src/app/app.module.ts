@@ -89,6 +89,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatInputModule} from "@angular/material/input";
 import {FilterPipe} from "./pipes/filter.pipe";
 import {FilterBookedPipe} from "./pipes/filterBooked.pipe";
+import {
+  DropdownDepartmentMaterialComponent
+} from "./components/dropdowns/dropdown-department-material/dropdown-department-material.component";
 
 
 @NgModule({
@@ -125,7 +128,8 @@ import {FilterBookedPipe} from "./pipes/filterBooked.pipe";
     HomeLayoutComponent,
     LoginLayoutComponent,
     FilterPipe,
-    FilterBookedPipe
+    FilterBookedPipe,
+    DropdownDepartmentMaterialComponent
   ],
   imports: [
     BrowserModule,

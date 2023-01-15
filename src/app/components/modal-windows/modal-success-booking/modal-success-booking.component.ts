@@ -16,4 +16,8 @@ export class ModalSuccessBookingComponent implements OnInit {
   closeSuccessBookingDialog(): void {
     this.dialogSuccessBooking.close();
   }
+
+  reloadLocation(){
+    location.reload()
+  }
 }
