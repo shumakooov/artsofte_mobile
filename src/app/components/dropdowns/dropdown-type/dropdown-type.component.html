@@ -1,18 +1,30 @@
-<span (tuiActiveZoneChange)="onActiveZone($any($event))" style="width: 100%;">
-    <button
-      style="width: 100%;"
-      tuiButton
-      size="s"
-      type="button"
-      iconRight="tuiIconChevronDown"
-      [tuiDropdown]="dropdownContent"
-      [tuiDropdownManual]="open"
-      (tuiObscured)="onObscured($any($event))"
-      (click)="onClick()"
-    >
-        Тип
-    </button>
-    <ng-template #dropdownContent>
-        <div class="dropdown">Здесь будут типы</div>
+<form>
+  <tui-select
+    class="b-form"
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="types ? stringify(types) : loading"
+    [(ngModel)]="value"
+    tuiTextfieldSize="s"
+  >
+    Тип
+    <input
+      tuiTextfield
+      placeholder="Выберите тип"
+    />
+    <ng-template tuiDataList>
+      <tui-data-list *ngIf="types; else loading">
+        <button
+          *ngFor="let type of types"
+          tuiOption
+          [value]="type.id"
+          (click)="onClick.emit(type.id)"
+        >
+          {{ type.name }}
+        </button>
+      </tui-data-list>
     </ng-template>
-</span>
+    <ng-template #loading>
+      <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+    </ng-template>
+  </tui-select>
+</form>

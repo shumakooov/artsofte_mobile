@@ -12,14 +12,18 @@ export class ProfileService {
   }
 
   editProfile(profile: Profile) {
-    return this.http.put(`${environment.API_URL}/profile/update`, profile, { withCredentials: true })
+    return this.http.put(`${environment.API_URL}/api/profile/update`, profile, { withCredentials: true })
   }
 
   getProfileInfo(): Observable<Profile>{
-    return this.http.get<Profile>(`${environment.API_URL}/profile`, {withCredentials: true} )
+    return this.http.get<Profile>(`${environment.API_URL}/api/profile`, {withCredentials: true} )
   }
 
   getBookingHistory(): Observable<BookedDevice[]> {
-    return this.http.get<BookedDevice[]>(`${environment.API_URL}/records/history/user`, { withCredentials: true })
+    return this.http.get<BookedDevice[]>(`${environment.API_URL}/api/records/history/user`, { withCredentials: true })
+  }
+
+  setProfileImage(file: FormData) {
+    return this.http.post(`${environment.API_URL}/api/image/user`, file,{withCredentials: true})
   }
 }

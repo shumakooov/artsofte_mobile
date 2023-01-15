@@ -1,5 +1,6 @@
 import {Component, OnInit, Optional} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
+import {DeviceService} from "../../../services/device.service";
 
 @Component({
   selector: 'app-modal-return-device',
@@ -8,8 +9,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class ModalReturnDeviceComponent implements OnInit {
 
-  constructor(@Optional() public dialogReturn: MatDialogRef<ModalReturnDeviceComponent>) { }
-
+  constructor(@Optional() public dialogReturn: MatDialogRef<ModalReturnDeviceComponent>){}
   ngOnInit(): void {
   }
 
@@ -17,4 +17,7 @@ export class ModalReturnDeviceComponent implements OnInit {
     this.dialogReturn.close()
   }
 
+  reloadLocation(){
+    location.reload()
+  }
 }

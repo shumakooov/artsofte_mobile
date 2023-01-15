@@ -1,25 +1,16 @@
 <div class="wrapper">
-  <h3 style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">История бронирований</h3>
-  <h3 style="font-size: 12px;">20.10.2022</h3>
-  <p style="font-size: 12px;"><span>POCO X3 PRO</span><span>15:00-17:00</span></p>
-  <p style="font-size: 12px;"><span>Pixel 6</span><span>13:00-15:00</span></p>
-  <p style="font-size: 12px;"><span>deviceName</span><span>HH:MM-HH:MM</span></p>
+  <tui-scrollbar>
+    <div style="height: 500px; padding-right: 25px;">
+      <h3 style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">История бронирований</h3>
+      <div *ngIf="bookingHistory$ | async as items">
+        <div *ngFor="let item of items">
+          <h3 style="font-size: 12px;">{{item.date}}</h3>
+          <p style="font-size: 12px;"><span>{{item.device.name}}</span><span>{{item.timeFrom}} - {{item.timeTo}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </tui-scrollbar>
 
-  <h3 style="font-size: 12px;">DD.MM.YYYY</h3>
-  <p style="font-size: 12px;"><span>deviceName</span><span>HH:MM-HH:MM</span></p>
-  <p style="font-size: 12px;"><span>deviceName</span><span>HH:MM-HH:MM</span></p>
-  <p style="font-size: 12px;"><span>deviceName</span><span>HH:MM-HH:MM</span></p>
-  <p style="font-size: 12px;"><span>deviceName</span><span>HH:MM-HH:MM</span></p>
 
-  <button
-    tuiButton
-    type="button"
-    class="button"
-    size="m"
-    style="font-size: 15px; width: 100%; justify-content: center; align-self: center;"
-    appearance="red_outline"
-    (click)="closeBookingHistoryDialog()"
-  >
-    Назад
-  </button>
 </div>

@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ModalDeviceProblemComponent} from "../modal-windows/modal-device-problem/modal-device-problem.component";
 import {ModalConfirmCancelReserveComponent} from "../modal-windows/modal-confirm-cancel-reserve/modal-confirm-cancel-reserve.component";
 import {ModalConfirmReturnDeviceComponent} from "../modal-windows/modal-confirm-return-device/modal-confirm-return-device.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-booked-device',
@@ -10,6 +11,7 @@ import {ModalConfirmReturnDeviceComponent} from "../modal-windows/modal-confirm-
   styleUrls: ['./booked-device.component.scss']
 })
 export class BookedDeviceComponent implements OnInit {
+  API_URL = environment.API_URL;
   @Input() imgUrl: string;
   @Input() deviceName: string;
   @Input() timeFrom: string;
@@ -38,7 +40,8 @@ export class BookedDeviceComponent implements OnInit {
 
   openConfirmReturnDeviceDialog(): void {
     this.dialog.open(ModalConfirmReturnDeviceComponent, {
-      panelClass: 'custom-modalbox'
+      panelClass: 'custom-modalbox',
+      data: this.idRecord
     });
   }
 

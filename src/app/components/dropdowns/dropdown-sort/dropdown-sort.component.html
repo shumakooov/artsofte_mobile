@@ -1,18 +1,30 @@
-<span (tuiActiveZoneChange)="onActiveZone($any($event))" style="width: 100%">
-    <button
-      style="margin-bottom: 15px; height:45px; width: 100%;"
-      tuiButton
-      type="button"
-      iconRight="tuiIconChevronDown"
-      appearance="outline"
-      [tuiDropdown]="dropdownContent"
-      [tuiDropdownManual]="open"
-      (tuiObscured)="onObscured($any($event))"
-      (click)="onClick()"
-    >
-        Сортировать по...
-    </button>
-    <ng-template #dropdownContent>
-        <div class="dropdown">Здесь будут сортировки</div>
+<form style="margin-bottom: 15px;">
+  <tui-select
+    class="b-form"
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="sorts ? stringify(sorts) : loading"
+    [(ngModel)]="value"
+    tuiTextfieldSize="s"
+  >
+    Сортировать по...
+    <input
+      tuiTextfield
+      placeholder="Выберите сортировку"
+    />
+    <ng-template tuiDataList>
+      <tui-data-list>
+        <button
+          *ngFor="let sort of sorts"
+          tuiOption
+          [value]="sort.id"
+          (click)="onClick.emit(sort.id)"
+        >
+          {{ sort.name }}
+        </button>
+      </tui-data-list>
     </ng-template>
-</span>
+    <ng-template #loading>
+      <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+    </ng-template>
+  </tui-select>
+</form>

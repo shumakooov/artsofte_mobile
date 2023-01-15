@@ -1,18 +1,31 @@
-<span (tuiActiveZoneChange)="onActiveZone($any($event))" style="width: 100%;">
-    <button
-      style="width: 100%;"
-      size="s"
-      tuiButton
-      type="button"
-      iconRight="tuiIconChevronDown"
-      [tuiDropdown]="dropdownContent"
-      [tuiDropdownManual]="open"
-      (tuiObscured)="onObscured($any($event))"
-      (click)="onClick()"
-    >
-        Система
-    </button>
-    <ng-template #dropdownContent>
-        <div class="dropdown">Здесь будут системы</div>
+<form>
+  <tui-select
+    *tuiLet="systems"
+    class="b-form"
+    [tuiTextfieldLabelOutside]="true"
+    [valueContent]="systems ? stringify(systems) : loading"
+    [(ngModel)]="value"
+    tuiTextfieldSize="s"
+  >
+    Система
+    <input
+      tuiTextfield
+      placeholder="Выберите систему"
+    />
+    <ng-template tuiDataList>
+      <tui-data-list *ngIf="systems; else loading">
+        <button
+          *ngFor="let system of systems"
+          tuiOption
+          [value]="system.id"
+          (click)="onClick.emit(system.id)"
+        >
+          {{ system.name }}
+        </button>
+      </tui-data-list>
     </ng-template>
-</span>
+    <ng-template #loading>
+      <tui-loader class="tui-space_vertical-3 loader"></tui-loader>
+    </ng-template>
+  </tui-select>
+</form>

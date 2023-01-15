@@ -11,6 +11,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {
   ModalBookingHistoryComponent
 } from "../../components/modal-windows/modal-booking-history/modal-booking-history.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-profile-page',
@@ -18,6 +19,7 @@ import {
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent implements OnInit {
+  API_URL = environment.API_URL
 
   constructor(private router: Router,
               private auth: AuthService,

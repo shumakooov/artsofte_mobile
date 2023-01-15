@@ -30,13 +30,14 @@
   <div class="filter tui-container tui-container_adaptive">
     <div class="tui-row tui-row_adaptive">
       <tui-island class="island">
-        <p style="margin-top: 0; margin-bottom: 11px;">Размер экрана, дюймов</p>
+        <p style="margin-top: 0; margin-bottom: 11px;">Размер экрана</p>
         <tui-range
           size="m"
-          [min]="minRange"
-          [max]="maxRange"
-          [step]="stepRange"
+          [min]="min"
+          [max]="max"
+          [step]="step"
           [(ngModel)]="rangeValue"
+          (ngModelChange)="handleDiagonal()"
         ></tui-range>
         <p style="margin-bottom: 0; margin-top: 11px;">
           <output for="m-size-range">
@@ -49,22 +50,20 @@
 
     <div class="tui-row tui-row_adaptive" style="margin-bottom: 15px; justify-items: center; justify-content: center">
       <div class="tui-col" style="margin-right: 10px; width: 46%">
-        <app-dropdown-system></app-dropdown-system>
+        <app-dropdown-system (onClick)="handleSystem($event)"></app-dropdown-system>
       </div>
       <div class="tui-col" style="width: 46%">
-        <app-dropdown-type></app-dropdown-type>
+        <app-dropdown-type (onClick)="handleType($event)"></app-dropdown-type>
       </div>
     </div>
 
     <div style="width: 100%; display: flex; flex-direction: column;">
-      <app-dropdown-department></app-dropdown-department>
+      <app-dropdown-department (onClick)="handleDept($event)"></app-dropdown-department>
       <app-dropdown-tag></app-dropdown-tag>
     </div>
 
-    <app-calendar></app-calendar>
-
     <div class="" style="width: 100%;">
-      <app-dropdown-sort></app-dropdown-sort>
+      <app-dropdown-sort (onClick)="handleSort($event)"></app-dropdown-sort>
     </div>
     <div>
       <button
@@ -72,7 +71,7 @@
         size="m"
         appearance="green_outline"
         style="width: 100%"
-        (click)="observer.complete()"
+        (click)="observer.complete(); doSearch()"
       >
         Поиск
       </button>

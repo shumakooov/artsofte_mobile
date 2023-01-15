@@ -6,6 +6,7 @@ import {Device} from "../../../interfaces";
 import {DeviceService} from "../../../services/device.service";
 import {ModalSuccessBookingComponent} from "../modal-success-booking/modal-success-booking.component";
 import {TuiAlertService} from "@taiga-ui/core";
+import {environment} from "../../../../environments/environment";
 
 
 @Component({
@@ -14,6 +15,7 @@ import {TuiAlertService} from "@taiga-ui/core";
   styleUrls: ['./modal-booking-card.component.scss']
 })
 export class ModalBookingCardComponent implements OnInit {
+  API_URL = environment.API_URL
   calendarValue = new FormControl(new Date());
   times: string[] = [
     '00:00', '00:30', '01:00',

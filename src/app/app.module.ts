@@ -9,7 +9,7 @@ import {
   TuiErrorModule,
   TuiDialogModule,
   TuiSvgModule,
-  TuiHostedDropdownModule,
+  TuiHostedDropdownModule, TuiScrollbarModule, TuiLoaderModule,
 } from "@taiga-ui/core";
 import {
   TuiInputModule,
@@ -21,9 +21,9 @@ import {
   TuiInputTagModule,
   TuiInputTimeModule,
   TuiRangeModule,
-  TuiIslandModule, TuiMultiSelectModule, TuiInputPasswordModule
+  TuiIslandModule, TuiMultiSelectModule, TuiInputPasswordModule, TuiSelectModule, TuiDataListWrapperModule
 } from '@taiga-ui/kit';
-import {TuiActiveZoneModule} from '@taiga-ui/cdk';
+import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgModule} from '@angular/core';
@@ -156,11 +156,17 @@ import {FilterBookedPipe} from "./pipes/filterBooked.pipe";
     MatSelectModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TuiScrollbarModule,
+    TuiLoaderModule,
+    TuiSelectModule,
+    TuiDataListWrapperModule,
+    TuiLetModule
   ],
   providers: [
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {}},
+    ListDevicesPageComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -4,6 +4,8 @@ import {TuiDay} from "@taiga-ui/cdk";
 import {TuiDialogContext, TuiDialogService, TuiDialogSize} from '@taiga-ui/core';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {DeviceService} from "../../services/device.service";
+import {ListDevicesPageComponent} from "../../pages/list-devices-page/list-devices-page.component";
+import {FilterService} from "../../services/filter.service";
 
 @Component({
   selector: 'app-filter',
@@ -13,16 +15,17 @@ import {DeviceService} from "../../services/device.service";
 })
 export class FilterComponent implements OnInit {
   public searchTerm: string;
-  search(event: any){
+
+  search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;
     this.deviceService.search.next(this.searchTerm);
   }
 
   //Range, выбор диагонали
-  rangeValue = [20, 30];
-  readonly minRange = 0;
-  readonly maxRange = 50;
-  readonly stepRange = 0.5;
+  max: number;
+  readonly min = 0;
+  rangeValue = [0, 0];
+  readonly step = 0.5;
 
   //Календарь
   readonly testForm = new FormGroup({
@@ -31,8 +34,11 @@ export class FilterComponent implements OnInit {
 
   //Dialog
   constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-              private deviceService: DeviceService
-  ) {}
+              private deviceService: DeviceService,
+              private listDevicesComp: ListDevicesPageComponent,
+              private filterService: FilterService
+  ) {
+  }
 
   onClick(
     content: PolymorpheusContent<TuiDialogContext>,
@@ -46,6 +52,34 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filterService.getFilters().subscribe(filters => {
+      this.max = filters.maxLen
+      this.rangeValue = [0, filters.maxLen]
+      this.deviceService.diagonalRange.next(this.rangeValue)
+    })
   }
 
+  handleDept(id: number) {
+    this.deviceService.deptId.next(id);
+  }
+
+  handleType(id: number) {
+    this.deviceService.typeId.next(id);
+  }
+
+  handleSystem(id: number) {
+    this.deviceService.systemId.next(id);
+  }
+
+  handleDiagonal() {
+    this.deviceService.diagonalRange.next(this.rangeValue)
+  }
+
+  handleSort(sort: string) {
+    this.deviceService.sort.next(sort)
+  }
+
+  doSearch() {
+    this.listDevicesComp.getFilteredDevices()
+  }
 }

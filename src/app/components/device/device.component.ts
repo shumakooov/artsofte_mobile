@@ -1,6 +1,8 @@
 import {Component, OnInit, ChangeDetectionStrategy, Input, Optional} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {ModalDeviceCardComponent} from "../modal-windows/modal-device-card/modal-device-card.component";
+import {environment} from "../../../environments/environment";
+import {ModalBookingCardComponent} from "../modal-windows/modal-booking-card/modal-booking-card.component";
 
 @Component({
   selector: 'app-device',
@@ -10,6 +12,7 @@ import {ModalDeviceCardComponent} from "../modal-windows/modal-device-card/modal
 })
 
 export class DeviceComponent implements OnInit {
+  API_URL = environment.API_URL;
   @Input() id: number;
   @Input() imgUrl: string;
   @Input() deviceName: string;
@@ -21,6 +24,13 @@ export class DeviceComponent implements OnInit {
 
   openCardDialog(): void {
     const dialogCard = this.dialog.open(ModalDeviceCardComponent, {
+      data: this.id,
+      panelClass: 'custom-modalbox'
+    });
+  }
+
+  openBookingDialog(): void {
+    this.dialog.open(ModalBookingCardComponent, {
       data: this.id,
       panelClass: 'custom-modalbox'
     });

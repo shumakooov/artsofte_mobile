@@ -1,13 +1,19 @@
 <div class="wrapper">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;">
+  <div
+    style="display: grid; grid-template-columns: 1fr 1fr; column-gap: 15px; justify-items: center; margin-bottom: 15px;"
+    *ngIf="profileInfo$ | async as profileInfo">
     <div class="container">
       <img class="container_img"
-           src="https://www.meme-arsenal.com/memes/8e750b5ffb6a6d58cdb01341726ab3af.jpg">
+           [src]="API_URL + profileInfo.image">
     </div>
     <div class="container">
       <p style="text-align: center; color: #2E62D9;">ID</p>
-      <p style="text-align: center;">XXXXXXXXX</p>
+      <p style="text-align: center;">{{profileInfo.id}}</p>
     </div>
+  </div>
+  <div>
+    <input type="file" class="file-input"
+           (change)="onFileSelected($event)">
   </div>
 
   <form
@@ -39,7 +45,7 @@
       />
     </tui-input>
 
-  <p style="text-align: center; color: #2E62D9;">Ссылка на телеграм</p>
+    <p style="text-align: center; color: #2E62D9;">Ссылка на телеграм</p>
 
     <tui-input
       [tuiTextfieldLabelOutside]="true"

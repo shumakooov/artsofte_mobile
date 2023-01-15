@@ -1,7 +1,7 @@
 <div class="container">
   <p style="color: #2E62D9; font-size: 15px; margin-top: 0; text-align: center">Выберите отдел, куда отнесете устройство</p>
   <div style="width: 100%;">
-  <app-dropdown-department style="width: 100%"></app-dropdown-department>
+  <app-dropdown-department (onClick)="handleDept($event)"  style="width: 100%"></app-dropdown-department>
   </div>
   <div class="buttons">
     <button
@@ -11,7 +11,7 @@
       appearance="green_outline"
       size="m"
       style="font-size: 15px; width: 130px; margin-right: 15px;"
-      (click)="closeConfirmReturn(); openReturnDeviceDialog()"
+      (click)="closeConfirmReturn(); doReturnDevice(); openReturnDeviceDialog()"
     >
       Подтвердить
     </button>

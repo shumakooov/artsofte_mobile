@@ -7,6 +7,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog
 import {ModalBookingCardComponent} from "../modal-booking-card/modal-booking-card.component";
 import {ModalCharacteristicDeviceComponent} from "../modal-characteristic-device/modal-characteristic-device.component";
 import {ModalUsageHistoryComponent} from "../modal-usage-history/modal-usage-history.component";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-modal-device-card',
@@ -14,6 +15,7 @@ import {ModalUsageHistoryComponent} from "../modal-usage-history/modal-usage-his
   styleUrls: ['./modal-device-card.component.scss']
 })
 export class ModalDeviceCardComponent implements OnInit {
+  API_URL = environment.API_URL
   @Input() id: number;
 
   value = [`Xiaomi`, `Android`, `6,67"`, `MIUI`, `MI Браузер`];
@@ -50,7 +52,8 @@ export class ModalDeviceCardComponent implements OnInit {
 
   openUsageHistoryDialog(): void {
     const dialogUsageHistory = this.dialog.open(ModalUsageHistoryComponent, {
-      panelClass: 'custom-modalbox'
+      panelClass: 'custom-modalbox',
+      data: this.data,
     });
   }
 }

@@ -6,7 +6,7 @@
   >
     <div class="container">
       <img class="container_img"
-           [src]="device.image">
+           [src]="API_URL + device.image">
     </div>
     <div class="container_spec">
       <p style="text-align: center; font-size: 15px; margin: 0; line-height: 20px;">{{device.name}}</p>
@@ -51,16 +51,6 @@
     История использований
   </button>
 
-  <button
-    tuiButton
-    type="button"
-    class="button"
-    appearance="blue_outline"
-    size="m"
-    style="font-size: 15px; width: 270px; margin-bottom: 15px;"
-  >
-    Календарь устройства
-  </button>
 
   <button
     tuiButton

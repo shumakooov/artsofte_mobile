@@ -1,17 +1,19 @@
 <div class="item">
-  <img [src]="imgUrl"
-       class="item_img"
-       alt="Изображение устройства"/>
-  <p style="line-height: 13px; font-weight: 700; color: #434854;">{{deviceName}}</p>
-  <p style="line-height: 13px; color: #434854;">OS: {{os}}</p>
-  <p style="line-height: 13px; color: #434854;">Диагональ: {{diagonal}}</p>
-  <p style="line-height: 13px; color: #434854;">Отдел: {{department}}</p>
+  <div (click)="openCardDialog()">
+    <img [src]="API_URL + imgUrl"
+         class="item_img"
+         alt="Изображение устройства"/>
+    <p style="line-height: 13px; font-weight: 700; color: #434854;">{{deviceName}}</p>
+    <p style="line-height: 13px; color: #434854;">OS: {{os}}</p>
+    <p style="line-height: 13px; color: #434854;">Диагональ: {{diagonal}}</p>
+    <p style="line-height: 13px; color: #434854;">Отдел: {{department}}</p>
+  </div>
   <button
     tuiButton
     type="button"
     class="button"
     style="height: 32px; font-size: 10px; width: 80%;"
-    (click)="openCardDialog()"
+    (click)="openBookingDialog()"
   >
     <tui-svg
       src="tuiIconCheckCircle"
