@@ -25,7 +25,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authForm = new FormGroup({
       username: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required])
+      password: new FormControl(null, [Validators.required]),
+      rememberme: new FormControl(false)
     })
   }
 
@@ -36,6 +37,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   login() {
+    const user = {
+      username: this.authForm.value.username,
+      password: this.authForm.value.password,
+      rememberme: this.authForm.value.rememberme
+    }
     this.aSub = this.auth.login(this.authForm.value).subscribe(
       () => this.router.navigate(['/devices']),
       error => {

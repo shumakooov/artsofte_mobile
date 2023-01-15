@@ -21,7 +21,12 @@ import {
   TuiInputTagModule,
   TuiInputTimeModule,
   TuiRangeModule,
-  TuiIslandModule, TuiMultiSelectModule, TuiInputPasswordModule, TuiSelectModule, TuiDataListWrapperModule
+  TuiIslandModule,
+  TuiMultiSelectModule,
+  TuiInputPasswordModule,
+  TuiSelectModule,
+  TuiDataListWrapperModule,
+  TuiCheckboxLabeledModule
 } from '@taiga-ui/kit';
 import {TuiActiveZoneModule, TuiLetModule} from '@taiga-ui/cdk';
 
@@ -161,7 +166,8 @@ import {FilterBookedPipe} from "./pipes/filterBooked.pipe";
     TuiLoaderModule,
     TuiSelectModule,
     TuiDataListWrapperModule,
-    TuiLetModule
+    TuiLetModule,
+    TuiCheckboxLabeledModule
   ],
   providers: [
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
